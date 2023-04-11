@@ -16,6 +16,9 @@ db.sqlite3
 apps/jobhunt/migrations
 apps/befitpro/migrations
 
+#pycharm
+.idea
+
 # AWS User-specific
 .idea/**/aws.xml
 
