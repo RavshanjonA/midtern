@@ -9,6 +9,9 @@
 .idea/**/dictionaries
 .idea/**/shelf
 
+#database
+db.sqlite3
+
 #app migrations
 apps/jobhunt/migrations
 
