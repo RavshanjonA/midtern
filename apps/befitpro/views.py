@@ -1,5 +1,3 @@
-from django.db.models import Count, Avg
-from django.shortcuts import render
 from rest_framework.generics import ListAPIView
 from rest_framework.views import APIView
 
