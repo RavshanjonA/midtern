@@ -16,7 +16,7 @@ class User(Model):
         return self.get_full_name
 class Service(Model):
     name = CharField(max_length=56)
-    logo = ImageField(max_length=56, upload_to=service_logo_upload_path)
+    logo = ImageField(upload_to=service_logo_upload_path)
 
     class Meta:
         db_table = 'service'
@@ -56,6 +56,6 @@ class Review(Model):
         return self.__class__.objects.filter(grade= self.grade).count()
 
     def __str__(self):
-        return self.user
+        return self.user.first_name
 
 

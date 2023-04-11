@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from apps.jobhunt.models import Company, Resume, Vacancy
+
+admin.site.register([Company, Resume, Vacancy])
