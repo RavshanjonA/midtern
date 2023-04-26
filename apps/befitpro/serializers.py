@@ -9,27 +9,28 @@ class UserSerializer(ModelSerializer):
         model = User
         fields = ('get_full_name', 'avatar')
 
-class ServiceSerializer(ModelSerializer):
-    def to_representation(self, instance):
-        representation =  super().to_representation(instance)
-        representation["review"] = instance.reviews.all().aggregate(Avg("grade"), Count("grade"))
-        # representation["pruducts"] = ProductSerializer(instance.products.all(), many=True)
-        representation["pruducts"]   = Product.objects.filter(service=instance).values_list('name', flat=True)
-
-        return representation
-    class Meta:
-        model = Service
-        fields = ('name', 'logo')
 
 class ProductSerializer(ModelSerializer):
     class Meta:
         model = Product
         fields = ('name', 'price', 'discount', 'service', 'get_logo')
-
+    def get_get_logo(self, product):
+        return product.get_logo.url
 
 class ReviewSerializer(ModelSerializer):
     class Meta:
         model = Review
         fields = ('text', 'grade', 'grade_count')
+
+
+
+class ServiceSerializer(ModelSerializer):
+    products = ProductSerializer(many=True )
+    reviews = ReviewSerializer(many=True)
+    class Meta:
+        model = Service
+        fields = ('name', 'logo', 'products', 'reviews')
+
+
 
 

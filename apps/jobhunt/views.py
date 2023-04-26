@@ -8,7 +8,7 @@ from apps.jobhunt.models import Company, Resume, Vacancy
 class HomeAPIView(APIView):
     def get(self, request):
         data = {}
-        data['companies']  = Company.objects.count()
-        data['resumes']  = Resume.objects.count()
-        data['vacancies']  = Vacancy.objects.count()
+        data['companies'] = Company.objects.all().count()
+        data['resumes'] = Resume.objects.all().count()
+        data['vacancies'] = Vacancy.objects.all().count()
         return Response(data=data)
